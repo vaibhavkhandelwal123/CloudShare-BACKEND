@@ -5,7 +5,7 @@ COPY . .
 RUN mvn clean package -DskipTests
 
 # ---------- Runtime Stage ----------
-FROM openjdk:17-slim
+FROM eclipse-temurin:17-jre-jammy
 WORKDIR /app
 
 # Copy only the built JAR from the previous stage
@@ -16,3 +16,4 @@ EXPOSE 8080
 
 # Start the Spring Boot application
 ENTRYPOINT ["java", "-jar", "app.jar"]
+
